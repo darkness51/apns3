@@ -1,0 +1,39 @@
+sudo: false
+
+language: python
+python:
+  - 2.7
+  - 3.4
+  - 3.5
+
+addons:
+  apt:
+    sources:
+      # Debian sid currently holds OpenSSL 1.0.2
+      - debian-sid
+    packages:
+      - libssl-dev
+
+cache:
+  pip: true
+  directories:
+    - env
+
+install:
+  - pip install coveralls
+
+before_script:
+  - openssl version
+  - make depends
+
+script:
+  - make test
+  - make flake8
+
+after_success:
+  - coveralls
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change

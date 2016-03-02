@@ -1,0 +1,14 @@
+coverage
+docutils
+flake8
+mock
+pdoc
+pep257
+pep8
+pygments
+pylint
+pytest
+pytest-cov
+readme
+sphinx
+sphinx_rtd_theme

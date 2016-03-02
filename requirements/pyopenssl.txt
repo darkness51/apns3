@@ -1,0 +1,2 @@
+pyopenssl>=0.14
+service_identity>=14.0.0

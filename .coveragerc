@@ -1,0 +1,11 @@
+[run]
+branch = true
+omit =
+    */env/*
+    */test/*
+    apns/_compat.py
+[report]
+exclude_lines =
+    def __repr__
+    def __str__
+    pragma: no cover
