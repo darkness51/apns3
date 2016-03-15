@@ -25,6 +25,8 @@ install:
 before_script:
   - openssl version -a
   - python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
+  - python -c 'import ssl; print(ssl.HAS_NPN)'
+  - python -c 'import ssl; print(ssl.HAS_ALPN)'
   - make depends
   - python -c 'from OpenSSL import SSL; print(SSL.SSLeay_version(SSL.SSLEAY_VERSION))'
 
