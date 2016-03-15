@@ -1,10 +1,11 @@
 sudo: false
 
 language: python
-python:
-  - 2.7
-  - 3.4
-  - 3.5
+
+env:
+  - PYTHON_VERSION=2.7.11
+  - PYTHON_VERSION=3.4.4
+  - PYTHON_VERSION=3.5.1
 
 addons:
   apt:
@@ -17,25 +18,17 @@ addons:
 cache:
   pip: true
   directories:
-    - env
+    - $HOME/env
+    - $HOME/.pyenv
 
 install:
-  - pip install coveralls
-
-before_script:
-  - openssl version -a
-  - python -c 'import ssl; print(ssl.OPENSSL_VERSION)'
-  - python -c 'import ssl; print(ssl.HAS_NPN)'
-  - python -c 'import ssl; print(ssl.HAS_ALPN)'
-  - make depends
-  - python -c 'from OpenSSL import SSL; print(SSL.SSLeay_version(SSL.SSLEAY_VERSION))'
+  - ./.travis/install.sh
 
 script:
-  - make test
-  - make flake8
+  - ./.travis/run.sh
 
 after_success:
-  - coveralls
+  - ./.travis/after.sh
 
 notifications:
   email:

@@ -9,9 +9,9 @@ import ssl
 
 from hyper.tls import H2_NPN_PROTOCOLS
 
-assert ssl.OPENSSL_VERSION_INFO[:3] >= (1, 0, 1), 'TLSv1.2 is required and ' \
-    'is not supported by the version of OpenSSL that Python was compiled '   \
-    'against'
+assert hasattr(ssl, 'HAS_ALPN'), 'Your version of Python does not support ' \
+    'ALPN, or was compiled against a version of OpenSSL that does not '     \
+    'support it.'
 
 assert hasattr(ssl, 'PROTOCOL_TLSv1_2'), 'TLSv1.2 is required and is not ' \
     'supported by your version of Python'
