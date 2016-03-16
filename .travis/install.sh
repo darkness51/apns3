@@ -3,7 +3,11 @@
 set -ex
 
 PYENV_ROOT="$HOME/.pyenv"
-git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
+if [ -d "$PYENV_ROOT" ]; then
+    cd $PYENV_ROOT && git pull
+else
+    git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
+fi
 PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 pyenv install $PYTHON_VERSION -s
