@@ -4,7 +4,9 @@ set -ex
 
 PYENV_ROOT="$HOME/.pyenv"
 if [ -d "$PYENV_ROOT" ]; then
-    cd $PYENV_ROOT && git pull
+    pushd $PYENV_ROOT
+    git pull
+    popd
 else
     git clone https://github.com/yyuu/pyenv.git $PYENV_ROOT
 fi
