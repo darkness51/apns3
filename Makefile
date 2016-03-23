@@ -2,7 +2,7 @@
 PROJECT := apns3
 PACKAGE := apns
 SOURCES := Makefile setup.py $(shell find $(PACKAGE) -name '*.py')
-HOOKS := $(shell find .hooks/)
+HOOKS := $(shell find .githooks/)
 
 # Python settings
 ifndef TRAVIS
