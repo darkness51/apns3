@@ -27,7 +27,7 @@ LOW_PRIORITY = '5'
 #: If the message expiration is ``0``, APNs treats the notification as if
 #: it expires immediately and does not store the notification or attempt to
 #: redeliver it.
-EXPIRE_IMMEDIATELY = '0'
+EXPIRE_IMMEDIATELY = 0
 
 
 class Message(object):
@@ -170,7 +170,7 @@ class Message(object):
             'apns-id': _id,
             'apns-topic': self.topic,
             'apns-priority': self.priority,
-            'apns-expiration': _exp,
+            'apns-expiration': str(_exp),
         }
         return {k: v for k, v in iteritems(hdrs) if v is not None}
 
@@ -198,9 +198,6 @@ class Message(object):
     def expiration(self):
         if not self._expiration:
             return None
-        if isinstance(self._expiration, basestring):
-            self._expiration = float(self._expiration)
-            
         return datetime.utcfromtimestamp(self._expiration)
 
     @expiration.setter
