@@ -198,6 +198,9 @@ class Message(object):
     def expiration(self):
         if not self._expiration:
             return None
+        if isinstance(self._expiration, basestring):
+            self._expiration = float(self._expiration)
+            
         return datetime.utcfromtimestamp(self._expiration)
 
     @expiration.setter
