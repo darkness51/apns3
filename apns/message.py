@@ -16,18 +16,18 @@ _EPOCH = datetime(1970, 1, 1)
 #: trigger an alert, sound, or badge on the target device. It is an error
 #: to use this priority for a push notification that contains only the
 #: ``content-available`` key.
-HIGH_PRIORITY = 10
+HIGH_PRIORITY = '10'
 
 #: Send the push message at a time that takes into account power
 #: considerations for the device. Notifications with this priority might be
 #: grouped and delivered in bursts. They are throttled, and in some cases
 #: are not delivered.
-LOW_PRIORITY = 5
+LOW_PRIORITY = '5'
 
 #: If the message expiration is ``0``, APNs treats the notification as if
 #: it expires immediately and does not store the notification or attempt to
 #: redeliver it.
-EXPIRE_IMMEDIATELY = 0
+EXPIRE_IMMEDIATELY = '0'
 
 
 class Message(object):
